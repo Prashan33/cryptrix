@@ -1,15 +1,21 @@
-import React from 'react';
 import { fetcher } from '@/lib/coingecko.actions';
 import Image from 'next/image';
 import { formatCurrency } from '@/lib/utils';
+import CandleSticksChart from '@/components/ui/CandleSticksChart';
 
 const CoinOverview = async () => {
-  const coin = await fetcher<CoinDetailsData>('/coins/bitcoin', {
-    localization: 'false',
-    tickers: 'false',
-    community_data: 'false',
-    developer_data: 'false',
-  });
+  const [coin, coinOHLCData] = await Promise.all([
+    fetcher<CoinDetailsData>('/coins/bitcoin', {
+      localization: 'false',
+      tickers: 'false',
+      community_data: 'false',
+      developer_data: 'false',
+    }),
+    fetcher<OHLCData[]>('/coins/bitcoin/ohlc', {
+      vs_currency: 'usd',
+      days: 1,
+    }),
+  ]);
 
   return (
     <div id="coin-overview">
@@ -20,6 +26,7 @@ const CoinOverview = async () => {
           <h1>{formatCurrency(coin.market_data.current_price.usd)}</h1>
         </div>
       </div>
+      <CandleSticksChart data={coinOHLCData} coinId={coin.id} />
     </div>
   );
 };
