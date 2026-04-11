@@ -17,8 +17,8 @@ const Header = () => {
           <Link href="/search" className="px-6 py-5 flex items-center h-full font-medium text-purple-100 transition-all hover:text-white cursor-pointer">
             Search
           </Link>
-          <Link href="/tokens" className="px-6 py-5 flex items-center h-full font-medium text-purple-100 transition-all hover:text-white cursor-pointer">
-            Tokens
+          <Link href="/coins" className="px-6 py-5 flex items-center h-full font-medium text-purple-100 transition-all hover:text-white cursor-pointer">
+            All Coins
           </Link>
         </nav>
       </div>

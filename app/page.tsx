@@ -3,6 +3,8 @@ import CoinOverview from '@/components/ui/home/CoinOverview';
 import CoinOverviewSkeleton from '@/components/ui/home/CoinOverviewSkeleton';
 import TrendingCoins from '@/components/ui/home/TrendingCoins';
 import TrendingCoinsSkeleton from '@/components/ui/home/TrendingCoinsSkeleton';
+import Categories from '@/components/ui/home/Categories';
+import { CategoriesFallback } from '@/components/ui/home/fallback';
 
 const Page = () => {
   return (
@@ -16,8 +18,10 @@ const Page = () => {
         </Suspense>
       </section>
 
-      <section className="">
-        <p>Categories</p>
+      <section className="w-full">
+        <Suspense fallback={<CategoriesFallback />}>
+          <Categories />
+        </Suspense>
       </section>
     </main>
   );
