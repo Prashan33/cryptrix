@@ -38,5 +38,24 @@ export async function fetcher<T>(
   
     return response.json();
   }
+
+export async function getPools(
+  _coinId: string,
+  network: string | null,
+  contractAddress: string | null,
+): Promise<{ id: string }> {
+  if (!network || !contractAddress) return { id: '' };
+
+  try {
+    const url = `https://api.geckoterminal.com/api/v2/networks/${network}/tokens/${contractAddress}/pools?page=1`;
+    const response = await fetch(url, { next: { revalidate: 60 } });
+    if (!response.ok) return { id: '' };
+    const json = await response.json();
+    const poolAddress = json?.data?.[0]?.attributes?.address ?? '';
+    return { id: poolAddress };
+  } catch {
+    return { id: '' };
+  }
+}
   
  
