@@ -235,12 +235,3 @@ Then open [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## Appendix
-
-### Short GitHub repo description (for the repo sidebar)
-
-> A real-time cryptocurrency dashboard built with Next.js 16, TypeScript, Tailwind v4, and shadcn/ui — live prices, candlestick charts, and a Cmd+K search terminal powered by CoinGecko.
-
-### Resume-ready project description (2–3 lines)
-
-> Built Cryptrix, a production-grade cryptocurrency dashboard with Next.js 16 (App Router), TypeScript, Tailwind CSS v4, and shadcn/ui, featuring live-polled prices, interactive `lightweight-charts` candlesticks, and a Cmd+K command palette with SWR-cached, debounced search. Designed server-first with Server Actions and Suspense streaming — no client-side API keys, no WebSocket dependency, and fully consistent pricing across every surface of the app.
